@@ -1,0 +1,14 @@
+.chipContainer {
+  display: block;
+  width: 320px;
+  border-radius: 25px;
+  background-color: #c7ffa6;
+  text-align: center;
+  padding: 8px;
+}
+
+.chipText {
+  color: #217a00;
+  font-weight: 600;
+  margin: 0px;
+}

@@ -1,0 +1,41 @@
+.productImage {
+  width: 110px;
+  height: 110px;
+  border: 1px solid #c4c4c4;
+}
+
+.product {
+  margin: 5px;
+}
+
+.productName {
+  font-size: 0.875rem;
+  color: #37352f;
+  font-weight: bold;
+}
+
+.productPrice {
+  font-size: 0.625rem;
+  color: #a5a5a5;
+  font-weight: bold;
+}
+
+.productSellingPrice {
+  font-size: 0.875rem;
+  color: #37352f;
+  font-weight: bold;
+}
+
+.productContainer {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start;
+  overflow: auto;
+  flex-direction: row;
+}
+
+.productContainer div {
+  margin: 5px;
+}

@@ -1,0 +1,49 @@
+.cartContainer {
+  background: white;
+  min-width: 350px;
+  max-height: calc(100vh - 50px);
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 3px -2px,
+    rgba(0, 0, 0, 0.14) 0px 3px 4px 0px, rgba(0, 0, 0, 0.12) 0px 1px 8px 0px;
+}
+
+.titleContainer {
+  height: 50px;
+  text-align: center;
+}
+
+.productContainer {
+  padding: 15px;
+  max-height: calc(100vh - 350px - 50px);
+  overflow: auto;
+}
+
+.totalContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0px 15px 0px 15px;
+}
+
+.total {
+  font-size: 1.125rem;
+  color: #37352f;
+  font-weight: bold;
+}
+
+.footerContainer {
+  height: 100px;
+  padding: 0px 15px 0px 15px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chipContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
