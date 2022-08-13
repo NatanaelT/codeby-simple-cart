@@ -35,7 +35,7 @@ export const Cart = ({ data }: CartProps) => {
             <section className={styles.productContainer}>
                 {data?.items?.length > 0 ?
                     data.items.map(({ name, price, imageUrl, sellingPrice }) => {
-                        return <Product key={`product_${name}`} name={name} price={convertNumber(price)} sellingPrice={convertNumber(sellingPrice)} imageUrl={imageUrl} />
+                        return <Product key={`product_${name}`} name={name} price={price} sellingPrice={sellingPrice} imageUrl={imageUrl} />
                     })
                     : <h1>Não há itens no carrinho</h1>
 

@@ -1,14 +1,17 @@
-import { convertNumberToMoney } from "../../utils/convertNumberToMoney";
-import style from './Product.module.css'
+import { IProduct } from "src/types/IProduct";
+import { addDecimalDot } from "src/utils/addDecimalDot";
+import { convertNumberToMoney } from "src/utils/convertNumberToMoney";
+import style from './Product.module.css';
 
-interface ProductProps {
-    name: string;
-    price: string;
-    imageUrl: string;
-    sellingPrice: string;
-}
 
-export const Product = ({ name, price, imageUrl, sellingPrice }: ProductProps) => {
+export const Product = ({ name, price, imageUrl, sellingPrice }: IProduct) => {
+
+    const convertNumber = (value: number) => {
+        let parsedValueWithDot = addDecimalDot(value)
+        let moneyValue = convertNumberToMoney(parsedValueWithDot)
+        return moneyValue
+    }
+
     return (
         <div className={style.productContainer}>
             <div>
@@ -16,8 +19,8 @@ export const Product = ({ name, price, imageUrl, sellingPrice }: ProductProps) =
             </div>
             <div>
                 <p className={[style.productName, style.product].join(' ')}>{name}</p>
-                <p className={[style.productPrice, style.product].join(' ')}>{price}</p>
-                <p className={[style.productSellingPrice, style.product].join(' ')}>{sellingPrice}</p>
+                <p className={[style.productPrice, style.product].join(' ')}>{convertNumber(price)}</p>
+                <p className={[style.productSellingPrice, style.product].join(' ')}>{convertNumber(sellingPrice)}</p>
             </div>
         </div>
     )

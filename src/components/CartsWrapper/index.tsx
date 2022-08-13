@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import { Cart } from '../Cart/index';
+import { CartMui } from '../MuiCart';
 import styles from './CartsWrapper.module.css'
 
 interface CartsWrapper { }
@@ -7,6 +8,13 @@ interface CartsWrapper { }
 export const CartsWrapper = ({ }: CartsWrapper) => {
     const [lessThanTen, setLessThanTen] = React.useState([]);
     const [moreThanTen, setMoreThanTen] = React.useState([]);
+    const [muiData, setMuiData] = React.useState<any>([]);
+
+    const [searchValue, setSearchValue] = React.useState('');
+
+    const filteredMuiData = useMemo(() => {
+        return muiData?.items?.filter(({ name }) => name.toLowerCase().includes(searchValue.toLowerCase()));
+    }, [muiData, searchValue]);
 
     useEffect(() => {
         getInitialData()
@@ -32,7 +40,7 @@ export const CartsWrapper = ({ }: CartsWrapper) => {
         <div className={styles.flexContainer}>
             <Cart data={lessThanTen} />
             <Cart data={moreThanTen} />
-            {/* <Cart data={lessThanTen} /> */}
+            <CartMui />
         </div>
     );
 }
