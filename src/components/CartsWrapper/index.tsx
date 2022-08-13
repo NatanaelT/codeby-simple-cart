@@ -22,8 +22,7 @@ export const CartsWrapper = ({ }: CartsWrapper) => {
                 return data
             })
             .catch(err => {
-                console.error('Failed to fetch');
-                console.error(err);
+                console.error('Failed to fetch', err);
             })))
         setLessThanTen(responses[0])
         setMoreThanTen(responses[1])

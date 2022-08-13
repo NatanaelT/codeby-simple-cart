@@ -83,14 +83,24 @@ export const CartMui = ({ }: CartMUIProps) => {
             <StyledProductContainer >
                 {filteredMuiData?.length > 0 ?
                     filteredMuiData.map(({ name, price, imageUrl, sellingPrice, id }) => {
-                        return <MuiProduct id={id} name={name} price={price} imageUrl={imageUrl} sellingPrice={sellingPrice} handleProductQuantityChange={handleProductQuantityChange} />
+                        return <MuiProduct
+                                    id={id}
+                                    name={name}
+                                    price={price}
+                                    imageUrl={imageUrl}
+                                    sellingPrice={sellingPrice}
+                                    handleProductQuantityChange={handleProductQuantityChange}
+                                />
                     })
                     : <h1>Não há itens no carrinho</h1>
                 }
             </StyledProductContainer>
             <Divider />
             <StyledTotalContainer>
-                <MuiChip type={getTotal() > 10 ? 'success' : 'info'} label={getTotal() > 10 ? 'Parabéns, sua compra tem frete grátis !' : `Gaste mais ${convertNumberToMoney(10 - getTotal())} para frete grátis!`} />
+                <MuiChip
+                    type={getTotal() > 10 ? 'success' : 'info'}
+                    label={getTotal() > 10 ? 'Parabéns, sua compra tem frete grátis !' : `Gaste mais ${convertNumberToMoney(10 - getTotal())} para frete grátis!`}
+                />
                 <StyledTotal>{convertNumberToMoney(getTotal() ?? 0)}</StyledTotal>
             </StyledTotalContainer>
             <Divider />
