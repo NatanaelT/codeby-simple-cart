@@ -32,7 +32,7 @@ export const Cart = ({ data }: CartProps) => {
 
     const ProductList = () => {
         return (
-            <section className={styles.productContainer}>
+            <section className={addDecimalDot(data?.value ?? 0) > 10 ? styles.productContainerNoShipping : styles.productContainerShipping}>
                 {data?.items?.length > 0 ?
                     data.items.map(({ name, price, imageUrl, sellingPrice }) => {
                         return <Product key={`product_${name}`} name={name} price={price} sellingPrice={sellingPrice} imageUrl={imageUrl} />

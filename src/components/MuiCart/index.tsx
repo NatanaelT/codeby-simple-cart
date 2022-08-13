@@ -1,10 +1,10 @@
-import { Box, Button, Divider, InputAdornment, TextField, Typography } from '@mui/material';
-import MuiProduct from '../MuiProduct';
-import { StyledCartPaper, StyledTotal } from './styles';
 import SearchIcon from '@mui/icons-material/Search';
+import { Box, Button, Divider, InputAdornment, TextField, Typography } from '@mui/material';
 import React, { useEffect, useMemo, useState } from 'react';
 import { convertNumberToMoney } from 'src/utils/convertNumberToMoney';
 import { MuiChip } from '../MuiChip';
+import MuiProduct from '../MuiProduct';
+import { StyledCartPaper, StyledProductContainer, StyledTotal, StyledTitle, StyledContentContainer, StyledTotalContainer, StyledFooterContainer } from './styles';
 
 interface CartMUIProps {
 }
@@ -60,11 +60,11 @@ export const CartMui = ({ }: CartMUIProps) => {
 
     return (
         <StyledCartPaper elevation={3}>
-            <Typography sx={{ fontWeight: 700, color: '#0A1929', fontSize: '2.25rem', textAlign: 'center', margin: 0 }}>
+            <StyledTitle>
                 Meu carrinho
-            </Typography>
+            </StyledTitle>
             <Divider />
-            <Box sx={{ padding: '15px' }}>
+            <StyledContentContainer>
                 <TextField
                     id="search-input"
                     variant="standard"
@@ -79,24 +79,24 @@ export const CartMui = ({ }: CartMUIProps) => {
                         ),
                     }}
                 />
-            </Box>
-            <Box sx={{ maxHeight: '450px', overflow: 'auto' }}>
+            </StyledContentContainer>
+            <StyledProductContainer >
                 {filteredMuiData?.length > 0 ?
                     filteredMuiData.map(({ name, price, imageUrl, sellingPrice, id }) => {
                         return <MuiProduct id={id} name={name} price={price} imageUrl={imageUrl} sellingPrice={sellingPrice} handleProductQuantityChange={handleProductQuantityChange} />
                     })
                     : <h1>Não há itens no carrinho</h1>
                 }
-            </Box>
+            </StyledProductContainer>
             <Divider />
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', padding: '15px' }}>
+            <StyledTotalContainer>
                 <MuiChip type={getTotal() > 10 ? 'success' : 'info'} label={getTotal() > 10 ? 'Parabéns, sua compra tem frete grátis !' : `Gaste mais ${convertNumberToMoney(10 - getTotal())} para frete grátis!`} />
                 <StyledTotal>{convertNumberToMoney(getTotal() ?? 0)}</StyledTotal>
-            </Box>
+            </StyledTotalContainer>
             <Divider />
-            <Box sx={{ height: '40px', padding: '15px' }}>
+            <StyledFooterContainer>
                 <Button sx={{ fontWeight: 'bold' }} fullWidth variant="contained">Finalizar Compra</Button>
-            </Box>
+            </StyledFooterContainer>
         </StyledCartPaper>
     )
 }

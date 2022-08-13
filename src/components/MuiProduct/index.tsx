@@ -21,11 +21,6 @@ interface MuiProductProps {
 export default function MuiProduct({ id, name, price, imageUrl, sellingPrice, handleProductQuantityChange }: MuiProductProps) {
     const [multiplier, setMultiplier] = useState(1);
 
-    const handleMultiplierChange = (type: string) => {
-        if (type === 'decrease') setMultiplier((prev) => prev > 0 ? prev - 1 : prev)
-        if (type === 'increase') setMultiplier((prev) => prev + 1)
-    }
-
     useEffect(() => {
         handleProductQuantityChange(id, multiplier);
     }, [multiplier])
@@ -48,10 +43,10 @@ export default function MuiProduct({ id, name, price, imageUrl, sellingPrice, ha
                 </Box>
             </Grid>
             <Grid item>
-                <IconButton onClick={() => handleMultiplierChange('decrease')} >
+                <IconButton onClick={() => setMultiplier((prev) => prev > 0 ? prev - 1 : prev)} >
                     <ExpandMoreIcon />
                 </IconButton>
-                <IconButton onClick={() => handleMultiplierChange('increase')} >
+                <IconButton onClick={() => setMultiplier((prev) => prev + 1)} >
                     <ExpandLessIcon />
                 </IconButton>
             </Grid>

@@ -1,20 +1,13 @@
-import React, { useEffect, useMemo } from 'react'
+import React, { useEffect } from 'react';
 import { Cart } from '../Cart/index';
 import { CartMui } from '../MuiCart';
-import styles from './CartsWrapper.module.css'
+import styles from './CartsWrapper.module.css';
 
 interface CartsWrapper { }
 
 export const CartsWrapper = ({ }: CartsWrapper) => {
     const [lessThanTen, setLessThanTen] = React.useState([]);
     const [moreThanTen, setMoreThanTen] = React.useState([]);
-    const [muiData, setMuiData] = React.useState<any>([]);
-
-    const [searchValue, setSearchValue] = React.useState('');
-
-    const filteredMuiData = useMemo(() => {
-        return muiData?.items?.filter(({ name }) => name.toLowerCase().includes(searchValue.toLowerCase()));
-    }, [muiData, searchValue]);
 
     useEffect(() => {
         getInitialData()
@@ -37,10 +30,16 @@ export const CartsWrapper = ({ }: CartsWrapper) => {
     }
 
     return (
-        <div className={styles.flexContainer}>
-            <Cart data={lessThanTen} />
-            <Cart data={moreThanTen} />
-            <CartMui />
+        <div className={styles.container}>
+            <div className={styles.item}>
+                <Cart data={lessThanTen} />
+            </div>
+            <div className={styles.item}>
+                <Cart data={moreThanTen} />
+            </div>
+            <div className={styles.item}>
+                <CartMui />
+            </div>
         </div>
     );
 }
