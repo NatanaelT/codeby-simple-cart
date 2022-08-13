@@ -6,7 +6,7 @@ interface MuiChipProps {
     type?: 'success' | 'error' | 'warning' | 'info';
 }
 
-export const MuiChip = ({ label, type }: MuiChipProps) => {
+export const MuiChip = ({ label, type = "success" }: MuiChipProps) => {
     return (
         <StyledChip chipType={type} label={label} />
     )

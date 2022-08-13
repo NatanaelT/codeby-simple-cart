@@ -5,17 +5,16 @@ import Box from '@mui/material/Box';
 import CardMedia from '@mui/material/CardMedia';
 import IconButton from '@mui/material/IconButton';
 import { useEffect, useMemo, useState } from 'react';
-import { IProduct } from 'src/types/IProduct';
 import { convertNumberToMoney } from 'src/utils/convertNumberToMoney';
 import { StyledPrice, StyledProductName, StyledSellingPrice, StyledTotal, StyledProductImg } from './styles';
 
 interface MuiProductProps {
-    id: number;
+    id: string;
     name: string;
     imageUrl: string;
     price: number;
     sellingPrice: number;
-    handleProductQuantityChange?: (id: number, quantity: number) => void;
+    handleProductQuantityChange?: (id: string, quantity: number) => void;
 }
 
 export default function MuiProduct({ id, name, price, imageUrl, sellingPrice, handleProductQuantityChange }: MuiProductProps) {

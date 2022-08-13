@@ -1,19 +1,18 @@
-import React, { useEffect } from 'react';
-import { Cart } from '../Cart/index';
-import { CartMui } from '../MuiCart';
+import React, { useCallback, useEffect, useState } from 'react';
+import { ICart } from 'src/types';
+import { Cart } from '../Cart/Cart';
+import { CartMui } from '../MuiCart/MuiCart';
 import styles from './CartsWrapper.module.css';
 
-interface CartsWrapper { }
-
-export const CartsWrapper = ({ }: CartsWrapper) => {
-    const [lessThanTen, setLessThanTen] = React.useState([]);
-    const [moreThanTen, setMoreThanTen] = React.useState([]);
+export const CartsWrapper = () => {
+    const [lessThanTen, setLessThanTen] = useState<ICart>();
+    const [moreThanTen, setMoreThanTen] = useState<ICart>();
 
     useEffect(() => {
         getInitialData()
     }, [])
 
-    const getInitialData = async () => {
+    const getInitialData = useCallback(async () => {
         const urls = ['/api/abaixo-10-reais', '/api/acima-10-reais']
 
         let responses = await Promise.all(urls.map(url => fetch(url)
@@ -26,7 +25,7 @@ export const CartsWrapper = ({ }: CartsWrapper) => {
             })))
         setLessThanTen(responses[0])
         setMoreThanTen(responses[1])
-    }
+    }, [])
 
     return (
         <div className={styles.container}>
