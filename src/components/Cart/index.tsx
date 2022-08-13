@@ -1,4 +1,5 @@
 import React from 'react'
+import { addDecimalDot } from '../../utils/addDecimalDot'
 import { convertNumberToMoney } from '../../utils/convertNumberToMoney'
 import { DefaultButton } from '../DefaultButton/index'
 import { DividerCss } from '../DividerCss/index'
@@ -15,17 +16,8 @@ export const Cart = ({ data }: CartProps) => {
     const handleCheckout = (event: React.SyntheticEvent) => {
     }
 
-    const convertNumberToStringWithDot = (number: number) => {
-        let stringValue = number.toString()
-        let valueWithDot: string = '0'
-        if (stringValue.length === 2) valueWithDot = `${stringValue.slice(1, 1)}.${stringValue.slice(0)}`
-        if (stringValue.length === 3) valueWithDot = `${stringValue.slice(0, 1)}.${stringValue.slice(1)}`
-        if (stringValue.length === 4) valueWithDot = `${stringValue.slice(0, 2)}.${stringValue.slice(2)}`
-        return parseFloat(valueWithDot)
-    }
-
     const convertNumber = (value: number) => {
-        let parsedValueWithDot = convertNumberToStringWithDot(value)
+        let parsedValueWithDot = addDecimalDot(value)
         let moneyValue = convertNumberToMoney(parsedValueWithDot)
         return moneyValue
     }
@@ -59,7 +51,7 @@ export const Cart = ({ data }: CartProps) => {
                     <p className={styles.total}>Total</p>
                     <p className={styles.total}>{convertNumber(data?.value ?? 0)}</p>
                 </div>
-                {convertNumberToStringWithDot(data?.value ?? 0) > 10 && (
+                {addDecimalDot(data?.value ?? 0) > 10 && (
                     <div className={styles.chipContainer} >
                         <SuccessChip text="Parabéns, sua compra tem frete grátis !" />
                     </div>
