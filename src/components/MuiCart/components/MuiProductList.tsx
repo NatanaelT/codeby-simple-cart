@@ -15,6 +15,7 @@ export const MuiProductList = ({ handleProductQuantityChange, filteredMuiData })
                 {filteredMuiData?.length > 0 ?
                     filteredMuiData.map(({ name, price, imageUrl, sellingPrice, id }) => {
                         return <MuiProduct
+                            key={`mui_product_${id}`}
                             id={id}
                             name={name}
                             price={price}
