@@ -11,7 +11,7 @@ interface CartProps {
     data: ICart
 }
 
-export const CartContext = createContext(null);
+export const CartContext = createContext(null)
 
 export const Cart = ({ data }: CartProps) => {
     return (

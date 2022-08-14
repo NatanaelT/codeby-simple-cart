@@ -2,11 +2,10 @@ import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Grid } from '@mui/material';
 import Box from '@mui/material/Box';
-import CardMedia from '@mui/material/CardMedia';
 import IconButton from '@mui/material/IconButton';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { convertNumberToMoney } from 'src/utils/convertNumberToMoney';
-import { StyledPrice, StyledProductName, StyledSellingPrice, StyledTotal, StyledProductImg } from './styles';
+import { StyledPrice, StyledProductImg, StyledProductName, StyledSellingPrice, StyledTotal } from './styles';
 
 interface MuiProductProps {
     id: string;

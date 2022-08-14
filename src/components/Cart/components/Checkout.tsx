@@ -4,7 +4,7 @@ import styles from '../Cart.module.css'
 export const Checkout = () => {
 
     const handleCheckout = (event: React.SyntheticEvent) => {
-        alert('compra finalizada')
+        alert('Compra finalizada')
     }
 
     return (

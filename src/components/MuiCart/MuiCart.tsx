@@ -1,16 +1,14 @@
 
-import { Box, Button, Divider, InputAdornment, TextField, Typography } from '@mui/material';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { ICart } from 'src/types';
-import { convertNumberToMoney } from 'src/utils/convertNumberToMoney';
-import { MuiChip } from '../MuiChip/MuiChip';
-import MuiProduct from '../MuiProduct/MuiProduct';
 import { MuiFooter } from './components/MuiFooter';
 import { MuiHeader } from './components/MuiHeader';
 import { MuiProductList } from './components/MuiProductList';
 import { MuiSearch } from './components/MuiSearch';
 import { MuiTotal } from './components/MuiTotal';
-import { StyledCartPaper, StyledProductContainer, StyledTotal, StyledTitle, StyledContentContainer, StyledTotalContainer, StyledFooterContainer } from './styles';
+import { StyledCartPaper } from './styles';
 
 export const CartMui = () => {
     const [muiData, setMuiData] = useState<ICart>();
@@ -54,13 +52,35 @@ export const CartMui = () => {
         )
     }, [muiData])
 
+    const handleCheckout = useCallback(() => {
+        toast.success('Compra finalizada!', {
+            position: "top-center",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        })
+        getInitialData()
+    }, [])
+
     return (
         <StyledCartPaper elevation={3}>
             <MuiHeader />
             <MuiSearch handleSearchChange={handleSearchChange} />
             <MuiProductList handleProductQuantityChange={handleProductQuantityChange} filteredMuiData={filteredMuiData} />
             <MuiTotal muiData={muiData} />
-            <MuiFooter />
+            <MuiFooter handleCheckout={handleCheckout} />
+            <ToastContainer position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover />
         </StyledCartPaper>
     )
 }

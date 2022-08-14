@@ -1,10 +1,14 @@
 import { Button } from "@mui/material"
 import { StyledFooterContainer } from "../styles"
 
-export const MuiFooter = () => {
+interface MuiFooterProps {
+    handleCheckout: () => void
+}
+
+export const MuiFooter = ({ handleCheckout }: MuiFooterProps) => {
     return (
         <StyledFooterContainer>
-            <Button sx={{ fontWeight: 'bold' }} fullWidth variant="contained">Finalizar Compra</Button>
+            <Button onClick={handleCheckout} sx={{ fontWeight: 'bold' }} fullWidth variant="contained">Finalizar Compra</Button>
         </StyledFooterContainer>
     )
 }
